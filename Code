@@ -3,86 +3,40 @@
   tryna steal code?
 |--------------------------------|
 
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
-local Window = Rayfield:CreateWindow({
-    Name = "TacoHub",
-    LoadingTitle = "Loading TacoHub...",
-    LoadingSubtitle = "Exploiting made easier since 2023.",
-    ConfigurationSaving = {
-       Enabled = true,
-       FolderName = TacoHub, -- Create a custom folder for your hub/game
-       FileName = "Taco Hub"
-    },
-Rayfield:Notify({
-   Title = "TacoHub",
-   Content = "Thanks for using TacoHub, Join the discord!",
-   Duration = 6.5,
-   Image = 4483362458,
-   Actions = { -- Notification Buttons
-      Ignore = {
-         Name = "hehe im a very cool hacker",
-         Callback = function()
-         print("TACOHUB HAS BEEN LAUNCHED!")
-      end
-   },
-},
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "TacoHub", HidePremium = true, SaveConfig = true, ConfigFolder = "TacoHub"})
+
+local ScriptsTab = Window:MakeTab({
+	Name = "Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
-    Discord = {
-       Enabled = true,
-       Invite = "cK3xDv2zmW", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
-       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
-    },
-    KeySystem = true, -- Set this to true to use our key system
-    KeySettings = {
-       Title = "Key System",
-       Subtitle = "TacoHub Key System",
-       Note = "We recommended joining the discord server, this is the easiest way to get a key, or you can go to our GitHub, not recommended.",
-       FileName = "TacoKey", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
-       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
-       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-       Key = {"https://raw.githubusercontent.com/TacoDark/TacoHub/main/Key"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
-    }
- })
-
- local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
-
- local Slider = PlayerTab:CreateSlider({
-    Name = "WalkSpeed",
-    Range = {1, 500},
-    Increment = 1,
-    Suffix = "Speed",
-    CurrentValue = 10,
-    Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     game.Players.LocalPlayer.Character:SetAttribute("SpeedMultiplier", Value)
-    end,
- })
-
- local Slider = PlayerTab:CreateSlider({
-    Name = "Jump Height",
-    Range = {10, 500},
-    Increment = 1,
-    Suffix = "Height",
-    CurrentValue = 10,
-    Flag = "Slider3", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-    end,
- })
-
- local ScriptsTab = Window:CreateTab("Scripts", 4483362458) -- Title, Image
-
-local Button = ScriptsTab:CreateButton({
-   Name = "Infinite Yield",
-   Callback = function()
-   loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
-   end,
+ScriptsTab:AddButton({
+	Name = "Infinite Yield",
+	Callback = function()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+  	end    
 })
 
-local Button = ScriptsTab:CreateButton({
-   Name = "Ice Hub",
-   Callback = function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()
-   end,
+ScriptsTab:AddButton({
+	Name = "LALOL Hub Backdoor Scanner",
+	Callback = function()
+      loadstring(game:HttpGet('https://raw.githubusercontent.com/Its-LALOL/LALOL-Hub/main/Backdoor-Scanner/script'))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "Ice Hub",
+	Callback = function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()
+  	end    
+})
+
+ScriptsTab:AddButton({
+	Name = "Midi Player",
+	Callback = function()
+      loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/richie0866/MidiPlayer/main/package.lua"))()
+  	end    
 })
